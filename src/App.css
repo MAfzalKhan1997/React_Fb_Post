@@ -2,18 +2,20 @@
   text-align: center;
 }
 
-.fbpost{
+/* .fbpost{
   margin: 15px 0px 15px 0px !important;
-}
+} */
 
 .fbname{ 
   font-size: 15px !important; 
   font-weight: 600 !important;
+  margin-left: -5px !important; 
 }
 
 .fbdate{ 
   font-size: 13px !important; 
   font-weight: 500 !important;
+  margin-left: -5px !important; 
 }
 
 .fbdesc{ 
@@ -21,6 +23,19 @@
   letter-spacing: -0.03em !important;
   /* font-weight: 500 !important; */
 }
+
+@media (max-width:500px) { .fbdesc{
+  font-size: 13px !important; 
+}}
+
+.fblikes{
+  margin: 3px 0px 12px 15px !important;
+  font-size: 13px !important; 
+}
+
+@media (max-width:500px) { .fblikes{
+  font-size: 11px !important; 
+}}
 
 .fbbtns{ 
   font-size: 15px !important; 
@@ -32,15 +47,13 @@
 }
 
 @media (max-width:500px) { .helo{
-
   display: none !important;
-
-}
-}
+}}
 
 .nomargin{
   margin: -5px -8px -20px -8px !important;
 }
+
 
 /* @media (max-width:500px) { .logoutbtn { 
   font-size: 27px;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../../App.css';
 
+import moment from "moment";
 import 'typeface-roboto';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -12,7 +13,7 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import red from '@material-ui/core/colors/red';
+// import red from '@material-ui/core/colors/red';
 // import FavoriteIcon from '@material-ui/icons/Favorite';
 import ThumbUpAlt from '@material-ui/icons/ThumbUpAltOutlined';
 // import ModeComment from '@material-ui/icons/ModeCommentOutlined';
@@ -25,6 +26,7 @@ import FbImageLibrary from 'react-fb-image-grid';
 const styles = theme => ({
   card: {
     maxWidth: 600,
+    margin: '20px 0px'
     // height: 500,
   },
   media: {
@@ -33,11 +35,16 @@ const styles = theme => ({
   },
   actions: {
     display: 'flex',
+    borderTop: '1px solid rgba(66, 66, 66, 0.199)',
+    maxWidth: '95%',
+    padding: '3px 0px',
   },
   avatar: {
-    backgroundColor: red[500],
+    // backgroundColor: red[500],
   },
 });
+
+
 
 class Post extends Component {
 
@@ -45,60 +52,77 @@ class Post extends Component {
   //   super(props)
   // }
 
+  likes(likes) {
+
+    return <Typography variant='caption' className='fblikes' align='left'>
+      {likes[0] + ',' + likes[1] + ' and ' + (likes.length - 2) + ' others'}
+    </Typography>
+
+  }
+
+  
   render() {
-    const { classes, images } = this.props;
+    const { classes, fbPosts } = this.props;
 
     return (
-      <Card className={classes.card}>
-        <CardHeader
-          className='nomargin'
-          avatar={
-            <Avatar aria-label="Recipe" className={classes.avatar}>
-              R
-            </Avatar>
-          }
-          action={
-            <IconButton>
-              <MoreVertIcon />
-            </IconButton>
-          }
-          title={<Typography color="primary" align='left' className='fbname'>Muhammad Afzal Khan</Typography>}
-          subheader={<Typography variant='caption' align='left' className='fbdate'>September 14, 2016</Typography>}
-        />
-        {/* <CardMedia
-          className={classes.media}
-          image='https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg'
-          title="Contemplative Reptile"
-          /> */}
-        <CardContent className='nomargin'>
-          
-          <Typography className='fbdesc' align='left'>
-            This impressive paella is a perfect party dish and a fun meal to cook together with your
-            guests. Add 1 cup of frozen peas along with the mussels, if you like.
-            </Typography>
-        </CardContent>
-        {<FbImageLibrary
-        
-          images={images}
-        // countFrom={2}
-        // hideOverlay={true}
-        // onClickEach={({src, index}) => {console.log(src,index)}}
-        // renderOverlay={() => <button>Show Image</button>}
-        // overlayBackgroundColor={'green' or '#000000' or 'rgb(255, 26, 26)'}
-        />}
-        <CardActions className={classes.actions}>
 
-          <Button aria-label="Add to favorites" className='fsbbtns'>
-            <ThumbUpAlt /> &nbsp; <span className='helo'> Like </span>
-          </Button>
-          <Button aria-label="Comment"  className='fbbtns'>
-            <InsertComment /> &nbsp; <span className='helo'> Comment </span>
-          </Button>
-          <Button aria-label="Share" className='fbbtns'>
-            <ShareIcon /> &nbsp; <span className='helo'> Share </span>
-          </Button>
-        </CardActions>
-      </Card>
+      fbPosts.map((posts, index) => {
+        return (
+
+          <Card className={classes.card}>
+            <CardHeader
+              className='nomargin'
+              avatar={
+                <Avatar
+                  alt=""
+                  src={posts.photo}
+                  className={classes.avatar}>
+                </Avatar>
+              }
+              action={
+                <IconButton>
+                  <MoreVertIcon />
+                </IconButton>
+              }
+              title={<Typography color="primary" align='left' className='fbname'>{posts.name}</Typography>}
+              subheader={<Typography variant='caption' align='left' className='fbdate'>{moment(posts.time).fromNow()}</Typography>}
+            />
+
+            <CardContent className='nomargin'>
+
+              <Typography className='fbdesc' align='left'>
+                {posts.desc}
+              </Typography>
+            </CardContent>
+
+            {<FbImageLibrary
+
+              images={posts.images}
+            // countFrom={2}
+            // hideOverlay={true}
+            // onClickEach={({src, index}) => {console.log(src,index)}}
+            // renderOverlay={() => <button>Show Image</button>}
+            // overlayBackgroundColor={'green' or '#000000' or 'rgb(255, 26, 26)'}
+            />}
+
+            {this.likes(posts.likes)}
+ 
+            <CardActions className={classes.actions}>
+
+              <Button aria-label="Add to favorites" className='fbbtns'>
+                <ThumbUpAlt /> &nbsp; &nbsp; <span className='helo'> Like </span>
+              </Button>
+              <Button aria-label="Comment" className='fbbtns'>
+                <InsertComment /> &nbsp; &nbsp; <span className='helo'> Comment </span>
+              </Button>
+              <Button aria-label="Share" className='fbbtns'>
+                <ShareIcon /> &nbsp; &nbsp; <span className='helo'> Share </span>
+              </Button>
+
+            </CardActions>
+          </Card>
+        )
+      })
     );
   }
 }
