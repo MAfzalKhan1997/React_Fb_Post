@@ -3,7 +3,21 @@
 }
 
 
-/* @media (max-width:500px) { .fbpost{ 
-    width: 70%;
- } 
+.fbname{ 
+  font-size: 15px !important; 
+  font-weight: 600 !important;
+}
+
+.fbdate{ 
+  font-size: 13px !important; 
+  font-weight: 500 !important;
+}
+
+.nomargin{
+
+  margin: -5px -8px -20px -8px !important;
+
+}
+/* @media (max-width:500px) { .logoutbtn { 
+  font-size: 27px;
 } */
