@@ -23,10 +23,11 @@ class App extends Component {
     return (
       <center>
         <div>
-          
-          <AppBar />
-          <Posts images={images}/>              
 
+          <AppBar />
+          <div className='fbpost'>
+          <Posts images={images}/>              
+          </div>
         </div>
       </center>
     );

@@ -19,7 +19,7 @@ function SimpleAppBar(props) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="primary">
+      <AppBar position="fixed" color="primary">
         <Toolbar>
           <Typography variant="display1" color="inherit">
             FB Posts

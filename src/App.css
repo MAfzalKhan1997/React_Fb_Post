@@ -2,6 +2,9 @@
   text-align: center;
 }
 
+.fbpost{
+  margin: 70px 0px 0px 0px !important;
+}
 
 .fbname{ 
   font-size: 15px !important; 
@@ -14,10 +17,9 @@
 }
 
 .nomargin{
-
   margin: -5px -8px -20px -8px !important;
-
 }
+
 /* @media (max-width:500px) { .logoutbtn { 
   font-size: 27px;
 } */
