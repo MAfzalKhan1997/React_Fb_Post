@@ -6,7 +6,7 @@ import Posts from './components/Posts/Posts';
 
 import 'typeface-roboto';
 
-import FbImageLibrary from 'react-fb-image-grid';
+// import FbImageLibrary from 'react-fb-image-grid';
 
 class App extends Component {
   render() {
@@ -28,6 +28,7 @@ class App extends Component {
           <div className='fbpost'>
           <Posts images={images}/>              
           </div>
+          
         </div>
       </center>
     );

@@ -3,7 +3,7 @@
 }
 
 .fbpost{
-  margin: 70px 0px 0px 0px !important;
+  margin: 15px 0px 15px 0px !important;
 }
 
 .fbname{ 
@@ -14,6 +14,28 @@
 .fbdate{ 
   font-size: 13px !important; 
   font-weight: 500 !important;
+}
+
+.fbdesc{ 
+  font-size: 15px !important; 
+  letter-spacing: -0.03em !important;
+  /* font-weight: 500 !important; */
+}
+
+.fbbtns{ 
+  font-size: 15px !important; 
+  color: rgba(80, 80, 80, 0.849) !important;
+  text-transform: capitalize !important;
+  flex-grow: 1 !important; 
+  /* letter-spacing: -0.03em !important; */
+  /* font-weight: 400 !important; */
+}
+
+@media (max-width:500px) { .helo{
+
+  display: none !important;
+
+}
 }
 
 .nomargin{

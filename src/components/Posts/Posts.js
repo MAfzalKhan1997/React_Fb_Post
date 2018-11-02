@@ -10,9 +10,13 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+// import FavoriteIcon from '@material-ui/icons/Favorite';
+import ThumbUpAlt from '@material-ui/icons/ThumbUpAltOutlined';
+// import ModeComment from '@material-ui/icons/ModeCommentOutlined';
+import InsertComment from '@material-ui/icons/InsertCommentOutlined';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
@@ -35,11 +39,11 @@ const styles = theme => ({
   },
 });
 
-class RecipeReviewCard extends React.Component {
+class Post extends Component {
 
-  constructor(props) {
-    super(props)
-  }
+  // constructor(props) {
+  //   super(props)
+  // }
 
   render() {
     const { classes, images } = this.props;
@@ -68,7 +72,7 @@ class RecipeReviewCard extends React.Component {
           /> */}
         <CardContent className='nomargin'>
           
-          <Typography variant="a" align='left'>
+          <Typography className='fbdesc' align='left'>
             This impressive paella is a perfect party dish and a fun meal to cook together with your
             guests. Add 1 cup of frozen peas along with the mussels, if you like.
             </Typography>
@@ -82,21 +86,25 @@ class RecipeReviewCard extends React.Component {
         // renderOverlay={() => <button>Show Image</button>}
         // overlayBackgroundColor={'green' or '#000000' or 'rgb(255, 26, 26)'}
         />}
-        <CardActions className={classes.actions} disableActionSpacing>
-          <IconButton aria-label="Add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="Share">
-            <ShareIcon />
-          </IconButton>
+        <CardActions className={classes.actions}>
+
+          <Button aria-label="Add to favorites" className='fsbbtns'>
+            <ThumbUpAlt /> &nbsp; <span className='helo'> Like </span>
+          </Button>
+          <Button aria-label="Comment"  className='fbbtns'>
+            <InsertComment /> &nbsp; <span className='helo'> Comment </span>
+          </Button>
+          <Button aria-label="Share" className='fbbtns'>
+            <ShareIcon /> &nbsp; <span className='helo'> Share </span>
+          </Button>
         </CardActions>
       </Card>
     );
   }
 }
 
-RecipeReviewCard.propTypes = {
+Post.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(RecipeReviewCard);
+export default withStyles(styles)(Post);
