@@ -20,8 +20,11 @@ import ThumbUpAlt from '@material-ui/icons/ThumbUpAltOutlined';
 import InsertComment from '@material-ui/icons/InsertCommentOutlined';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Paper from '@material-ui/core/Paper';
 
 import FbImageLibrary from 'react-fb-image-grid';
+import FacebookEmoji from 'react-facebook-emoji';
+
 
 const styles = theme => ({
   card: {
@@ -60,7 +63,7 @@ class Post extends Component {
 
   }
 
-  
+
   render() {
     const { classes, fbPosts } = this.props;
 
@@ -106,24 +109,37 @@ class Post extends Component {
             />}
 
             {this.likes(posts.likes)}
- 
+
             <CardActions className={classes.actions}>
 
+              <Paper className='fbreactsDiv'>
+                <FacebookEmoji type="like" size="sm" /> &nbsp;
+                <FacebookEmoji type="love" size="sm" /> &nbsp;
+                <FacebookEmoji type="haha" size="sm" /> &nbsp;
+                <FacebookEmoji type="wow" size="sm" /> &nbsp;
+                {/* <FacebookEmoji type="yay" size="sm" /> */}
+                <FacebookEmoji type="sad" size="sm" /> &nbsp;
+                <FacebookEmoji type="angry" size="sm" />
+              </Paper>
               <Button aria-label="Add to favorites" className='fbbtns'>
-                <ThumbUpAlt /> &nbsp; &nbsp; <span className='helo'> Like </span>
+                <ThumbUpAlt /> &nbsp; &nbsp; <span className='btntext'> Like </span>
               </Button>
               <Button aria-label="Comment" className='fbbtns'>
-                <InsertComment /> &nbsp; &nbsp; <span className='helo'> Comment </span>
+                <InsertComment /> &nbsp; &nbsp; <span className='btntext'> Comment </span>
               </Button>
               <Button aria-label="Share" className='fbbtns'>
-                <ShareIcon /> &nbsp; &nbsp; <span className='helo'> Share </span>
+                <ShareIcon /> &nbsp; &nbsp; <span className='btntext'> Share </span>
               </Button>
 
             </CardActions>
+
           </Card>
+
+
         )
       })
     );
+
   }
 }
 

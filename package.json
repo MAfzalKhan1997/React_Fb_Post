@@ -8,6 +8,7 @@
     "moment": "^2.22.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
+    "react-facebook-emoji": "^1.0.11",
     "react-fb-image-grid": "^0.1.4",
     "react-scripts": "2.1.1",
     "typeface-roboto": "0.0.54"
