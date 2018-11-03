@@ -51,9 +51,13 @@ const styles = theme => ({
 
 class Post extends Component {
 
-  // constructor(props) {
-  //   super(props)
-  // }
+  constructor(props) {
+    super(props)
+
+    this.state={
+      reactsDiv:[false,false,false,false],
+    }
+  }
 
   likes(likes) {
 
@@ -63,9 +67,18 @@ class Post extends Component {
 
   }
 
-
+  showReactsDiv(param,index) {
+    const { reactsDiv } = this.state;
+    reactsDiv[index] = param;
+    
+    this.setState({
+      reactsDiv,
+    })
+  }
+ 
   render() {
     const { classes, fbPosts } = this.props;
+    const { reactsDiv } = this.state;
 
     return (
 
@@ -111,17 +124,35 @@ class Post extends Component {
             {this.likes(posts.likes)}
 
             <CardActions className={classes.actions}>
+              {
+                reactsDiv[index] === true ?
 
-              <Paper className='fbreactsDiv'>
-                <FacebookEmoji type="like" size="sm" /> &nbsp;
+                <Paper className='fbreactsDiv'>
+                  <FacebookEmoji type="like" size="sm" /> &nbsp;
                 <FacebookEmoji type="love" size="sm" /> &nbsp;
                 <FacebookEmoji type="haha" size="sm" /> &nbsp;
                 <FacebookEmoji type="wow" size="sm" /> &nbsp;
                 {/* <FacebookEmoji type="yay" size="sm" /> */}
-                <FacebookEmoji type="sad" size="sm" /> &nbsp;
+                  <FacebookEmoji type="sad" size="sm" /> &nbsp;
                 <FacebookEmoji type="angry" size="sm" />
-              </Paper>
-              <Button aria-label="Add to favorites" className='fbbtns'>
+                </Paper> 
+                : null
+              }
+              <Button aria-label="Add to favorites" className='fbbtns'
+                onMouseEnter={() => this.showReactsDiv(true,index)
+                }
+                // onTouchStart={() => {
+                //   this.handlerShowReactions(true);
+                // }}
+                onMouseLeave={() => this.showReactsDiv(false,index)
+                }
+              // onTouchEnd={() => {
+              //   this.showReactsDiv(false);
+              // }}
+              // onBlur={() => {
+              //   this.showReactsDiv(false);
+              // }}
+              >
                 <ThumbUpAlt /> &nbsp; &nbsp; <span className='btntext'> Like </span>
               </Button>
               <Button aria-label="Comment" className='fbbtns'>

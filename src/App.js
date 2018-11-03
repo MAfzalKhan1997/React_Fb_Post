@@ -37,7 +37,7 @@ class App extends Component {
         {
           photo: 'https://scontent.fkhi1-1.fna.fbcdn.net/v/t1.0-9/35480773_1690613501035186_3359411986004705280_n.jpg?_nc_cat=103&_nc_ht=scontent.fkhi1-1.fna&oh=e5bdba2cb579f5527348dc52734f6ceb&oe=5C768E61',
           name: 'Muhammad Afzal Khan',
-          time: Date.now()-31231131,
+          time: Date.now() - 31231131,
           desc: 'Eid Mubarak :)',
           images: ['https://scontent.fkhi1-1.fna.fbcdn.net/v/t1.0-9/39999669_1801223866640815_4201991549078208512_n.jpg?_nc_cat=104&_nc_ht=scontent.fkhi1-1.fna&oh=5a042863013e24c7427261fa6b7e1631&oe=5C7FC00A',
             'https://scontent.fkhi1-1.fna.fbcdn.net/v/t1.0-9/39948188_1801223913307477_3608225591855153152_n.jpg?_nc_cat=110&_nc_ht=scontent.fkhi1-1.fna&oh=37acc36154e134b27cb3cf8177817efa&oe=5C7E9381',
@@ -47,7 +47,7 @@ class App extends Component {
         {
           photo: 'https://avatars2.githubusercontent.com/u/36229784?s=400&v=4',
           name: 'Muhammad Usama',
-          time: Date.now()-312311312,
+          time: Date.now() - 312311312,
           desc: '4th semister is just about to be end. But the bonding between us will never <3 ; )',
           images: [
             'https://scontent.fkhi1-1.fna.fbcdn.net/v/t1.0-9/43120241_929929693878238_5418292275459391488_n.jpg?_nc_cat=103&_nc_ht=scontent.fkhi1-1.fna&oh=5ce1c787594ae856b70b30c5e8823c5c&oe=5C409AF9',
@@ -61,7 +61,7 @@ class App extends Component {
         {
           photo: 'https://scontent.fkhi1-1.fna.fbcdn.net/v/t1.0-9/35480773_1690613501035186_3359411986004705280_n.jpg?_nc_cat=103&_nc_ht=scontent.fkhi1-1.fna&oh=e5bdba2cb579f5527348dc52734f6ceb&oe=5C768E61',
           name: 'Muhammad Afzal Khan',
-          time: Date.now()-3123113121,
+          time: Date.now() - 3123113121,
           desc: 'BBQ Night wid Czns, Late n8 Scene :D',
           images: [
             'https://scontent.fkhi1-1.fna.fbcdn.net/v/t1.0-9/39753179_1801707203259148_3706996525264535552_n.jpg?_nc_cat=105&_nc_ht=scontent.fkhi1-1.fna&oh=b82ae87e513bb84184707cab5b3b0b1f&oe=5C4949F7',
@@ -74,11 +74,21 @@ class App extends Component {
           likes: ['Umair Serwar', 'Muhammd Asad Sheikh', 'Muhammad Usama', 'Taha Jamal', 'Muhammad Afzal Khan', '', '', '', ''],
 
         }
-      ]
+      ],
+
+      // reactsDiv: [],
 
     };
 
+    // this.showReactsDiv = this.showReactsDiv.bind(this,);
+
   }
+
+  // showReactsDiv(param, index) {
+  //   const { reactsDiv } = this.state;
+  //   reactsDiv[index] = param;
+  //   // console.log((param,index,reactsDiv))
+  // }
 
   render() {
 
