@@ -48,15 +48,19 @@
 
 .fbreactsDiv{
 position: absolute !important;
-width: 265px !important;
+width: 258px !important;
 height: 43px !important;
 border-radius: 100px !important;
 padding: 3px 0px 0px 0px !important;
 /* border: 1px black solid !important; */
 /* margin-bottom: 30px !important; */
 /* top: 80px !important; */
-margin-top: -45px !important;
+margin-top: -43px !important;
 margin-left: -4px !important;
+}
+
+.fbreacts{
+  margin: 0px 3px 0px 3px !important;
 }
 
 @media (max-width:500px) { .btntext{

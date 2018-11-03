@@ -76,19 +76,42 @@ class App extends Component {
         }
       ],
 
-      // reactsDiv: [],
-
     };
-
-    // this.showReactsDiv = this.showReactsDiv.bind(this,);
 
   }
 
-  // showReactsDiv(param, index) {
-  //   const { reactsDiv } = this.state;
-  //   reactsDiv[index] = param;
-  //   // console.log((param,index,reactsDiv))
-  // }
+  addlike(index, type) {
+    const { fbPosts } = this.state;
+
+
+    if (fbPosts[index].react === type) {
+
+      if (fbPosts[index].react === 'btn') {
+
+        if (fbPosts[index].likes[0] === 'You') {
+
+          fbPosts[index].likes.splice(0, 1);
+        }
+        else {
+          fbPosts[index].likes.splice(0, 0, 'You');
+        }
+      }
+
+    }
+    else {
+      fbPosts[index].react = type;
+
+      if (fbPosts[index].react === 'btn' && fbPosts[index].likes[0] === 'You') {
+        fbPosts[index].likes.splice(0, 1);
+      }
+      else {
+        if (fbPosts[index].likes[0] !== 'You') {
+          fbPosts[index].likes.splice(0, 0, 'You');
+        }
+      }
+    }
+    // console.log(fbPosts[index].react)
+  }
 
   render() {
 
@@ -99,7 +122,7 @@ class App extends Component {
 
           <AppBar />
           <div className='fbpost'>
-            <Posts fbPosts={fbPosts} />
+            <Posts fbPosts={fbPosts} addlike={this.addlike.bind(this)} />
           </div>
 
         </div>

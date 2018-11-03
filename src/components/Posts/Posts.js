@@ -54,8 +54,8 @@ class Post extends Component {
   constructor(props) {
     super(props)
 
-    this.state={
-      reactsDiv:[false,false,false,false],
+    this.state = {
+      reactsDiv: [false, false, false, false],
     }
   }
 
@@ -67,17 +67,17 @@ class Post extends Component {
 
   }
 
-  showReactsDiv(param,index) {
+  showReactsDiv(param, index) {
     const { reactsDiv } = this.state;
     reactsDiv[index] = param;
-    
+
     this.setState({
       reactsDiv,
     })
   }
- 
+
   render() {
-    const { classes, fbPosts } = this.props;
+    const { classes, fbPosts, addlike } = this.props;
     const { reactsDiv } = this.state;
 
     return (
@@ -124,27 +124,36 @@ class Post extends Component {
             {this.likes(posts.likes)}
 
             <CardActions className={classes.actions}>
-              {
-                reactsDiv[index] === true ?
+              {reactsDiv[index] === true ?
 
-                <Paper className='fbreactsDiv'>
-                  <FacebookEmoji type="like" size="sm" /> &nbsp;
-                <FacebookEmoji type="love" size="sm" /> &nbsp;
-                <FacebookEmoji type="haha" size="sm" /> &nbsp;
-                <FacebookEmoji type="wow" size="sm" /> &nbsp;
-                {/* <FacebookEmoji type="yay" size="sm" /> */}
-                  <FacebookEmoji type="sad" size="sm" /> &nbsp;
-                <FacebookEmoji type="angry" size="sm" />
-                </Paper> 
-                : null
+                <Paper className='fbreactsDiv'
+                  onMouseEnter={() => this.showReactsDiv(true, index)
+                  }
+                  onMouseLeave={() => this.showReactsDiv(false, index)
+                  }
+                >
+                  <span onClick={() => (addlike(index,'like'), this.showReactsDiv(false, index))} className='fbreacts'>
+                    <FacebookEmoji type="like" size="sm" /></span>
+                  <span onClick={() => (addlike(index,'love'), this.showReactsDiv(false, index))} className='fbreacts'>
+                    <FacebookEmoji type="love" size="sm" /></span>
+                  <span onClick={() => (addlike(index,'haha'), this.showReactsDiv(false, index))} className='fbreacts'>
+                    <FacebookEmoji type="haha" size="sm" /></span>
+                  <span onClick={() => (addlike(index,'wow'), this.showReactsDiv(false, index))} className='fbreacts'>
+                    <FacebookEmoji type="wow" size="sm" /></span>
+                  <span onClick={() => (addlike(index,'sad'), this.showReactsDiv(false, index))} className='fbreacts'>
+                    <FacebookEmoji type="sad" size="sm" /></span>
+                  <span onClick={() => (addlike(index,'angry'), this.showReactsDiv(false, index))} className='fbreacts'>
+                    <FacebookEmoji type="angry" size="sm" /></span>
+                </Paper> : null
               }
               <Button aria-label="Add to favorites" className='fbbtns'
-                onMouseEnter={() => this.showReactsDiv(true,index)
+                onClick={() => (addlike(index,'btn'), this.showReactsDiv(false, index))
                 }
-                // onTouchStart={() => {
-                //   this.handlerShowReactions(true);
-                // }}
-                onMouseLeave={() => this.showReactsDiv(false,index)
+                onTouchStart={() => this.showReactsDiv(true, index)
+                }
+                onMouseEnter={() => this.showReactsDiv(true, index)
+                }
+                onMouseLeave={() => this.showReactsDiv(false, index)
                 }
               // onTouchEnd={() => {
               //   this.showReactsDiv(false);
@@ -153,7 +162,7 @@ class Post extends Component {
               //   this.showReactsDiv(false);
               // }}
               >
-                <ThumbUpAlt /> &nbsp; &nbsp; <span className='btntext'> Like </span>
+                <ThumbUpAlt /> &nbsp; &nbsp; <span className='btntext'>{posts.react ? posts.react === 'btn' ? 'Like' : posts.react : 'Like' }</span>
               </Button>
               <Button aria-label="Comment" className='fbbtns'>
                 <InsertComment /> &nbsp; &nbsp; <span className='btntext'> Comment </span>
