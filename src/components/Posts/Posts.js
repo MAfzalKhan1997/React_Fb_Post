@@ -22,7 +22,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Paper from '@material-ui/core/Paper';
 import Tooltip from '@material-ui/core/Tooltip';
-import Fade from '@material-ui/core/Fade';
+// import Fade from '@material-ui/core/Fade';
 import Zoom from '@material-ui/core/Zoom';
 
 import FbImageLibrary from 'react-fb-image-grid';
@@ -48,7 +48,7 @@ const styles = theme => ({
   avatar: {
     // backgroundColor: red[500],
   },
-  lightTooltip: { 
+  lightTooltip: {
     background: theme.palette.common.black,
     color: theme.palette.text.white,
     // boxShadow: theme.shadows[1],
@@ -65,6 +65,8 @@ class Post extends Component {
 
     this.state = {
       reactsDiv: [false, false, false, false],
+      reactsSize: 'sm',
+      reactsType: null,
     }
   }
 
@@ -81,13 +83,14 @@ class Post extends Component {
     reactsDiv[index] = param;
 
     this.setState({
+      reactsSize: 'sm',
       reactsDiv,
     })
   }
 
   render() {
     const { classes, fbPosts, addlike } = this.props;
-    const { reactsDiv } = this.state;
+    const { reactsDiv, reactsSize, reactsType } = this.state;
 
     return (
 
@@ -142,33 +145,65 @@ class Post extends Component {
                   }
                 >
                   <Tooltip TransitionComponent={Zoom} placement="top" title="Like" classes={{ tooltip: classes.lightTooltip }}>
-                    <span onClick={() => (addlike(index, 'liked'), this.showReactsDiv(false, index))} className='fbreacts'>
-                      <FacebookEmoji type="like" size="sm" /></span>
+                    <span onClick={() => (addlike(index, 'liked'), this.showReactsDiv(false, index))} className='fbreacts'
+                      onMouseEnter={() => this.setState({ reactsSize: 'md', reactsType: 'like' })
+                      }
+                      onMouseLeave={() => this.setState({ reactsSize: 'sm' })
+                      }
+                    >
+                      <FacebookEmoji type="like" size={reactsType === 'like' ? reactsSize : 'sm'} /></span>
                   </Tooltip>
 
                   <Tooltip TransitionComponent={Zoom} placement="top" title="Love" classes={{ tooltip: classes.lightTooltip }}>
-                    <span onClick={() => (addlike(index, 'love'), this.showReactsDiv(false, index))} className='fbreacts'>
-                      <FacebookEmoji type="love" size="sm" /></span>
+                    <span onClick={() => (addlike(index, 'love'), this.showReactsDiv(false, index))} className='fbreacts'
+                      onMouseEnter={() => this.setState({ reactsSize: 'md', reactsType: 'love' })
+                      }
+                      onMouseLeave={() => this.setState({ reactsSize: 'sm' })
+                      }
+                    >
+                      <FacebookEmoji type="love" size={reactsType === 'love' ? reactsSize : 'sm'} /></span>
                   </Tooltip>
 
                   <Tooltip TransitionComponent={Zoom} placement="top" title="Haha" classes={{ tooltip: classes.lightTooltip }}>
-                    <span onClick={() => (addlike(index, 'haha'), this.showReactsDiv(false, index))} className='fbreacts'>
-                      <FacebookEmoji type="haha" size="sm" /></span>
+                    <span onClick={() => (addlike(index, 'haha'), this.showReactsDiv(false, index))} className='fbreacts'
+                      onMouseEnter={() => this.setState({ reactsSize: 'md', reactsType: 'haha' })
+                      }
+                      onMouseLeave={() => this.setState({ reactsSize: 'sm' })
+                      }
+                    >
+                      <FacebookEmoji type="haha" size={reactsType === 'haha' ? reactsSize : 'sm'} /></span>
                   </Tooltip>
 
                   <Tooltip TransitionComponent={Zoom} placement="top" title="Wow" classes={{ tooltip: classes.lightTooltip }}>
-                    <span onClick={() => (addlike(index, 'wow'), this.showReactsDiv(false, index))} className='fbreacts'>
-                      <FacebookEmoji type="wow" size="sm" /></span>
+                    <span onClick={() => (addlike(index, 'wow'), this.showReactsDiv(false, index))} className='fbreacts'
+                      onMouseEnter={() => this.setState({ reactsSize: 'md', reactsType: 'wow' })
+                      }
+                      onMouseLeave={() => this.setState({ reactsSize: 'sm' })
+                      }
+                    >
+                      <FacebookEmoji type="wow" size={reactsType === 'wow' ? reactsSize : 'sm'} /></span>
                   </Tooltip>
 
                   <Tooltip TransitionComponent={Zoom} placement="top" title="Sad" classes={{ tooltip: classes.lightTooltip }}>
-                    <span onClick={() => (addlike(index, 'sad'), this.showReactsDiv(false, index))} className='fbreacts'>
-                      <FacebookEmoji type="sad" size="sm" /></span>
+                    <span onClick={() => (addlike(index, 'sad'), this.showReactsDiv(false, index))} className='fbreacts'
+                      onMouseEnter={() => this.setState({ reactsSize: 'md', reactsType: 'sad' })
+                      }
+                      onMouseLeave={() => this.setState({ reactsSize: 'sm' })
+                      }
+                    >
+                      <FacebookEmoji type="sad" size={reactsType === 'sad' ? reactsSize : 'sm'} /></span>
                   </Tooltip>
 
                   <Tooltip TransitionComponent={Zoom} placement="top" title="Angry" classes={{ tooltip: classes.lightTooltip }}>
-                    <span onClick={() => (addlike(index, 'angry'), this.showReactsDiv(false, index))} className='fbreacts'>
-                      <FacebookEmoji type="angry" size="sm" /></span>
+                    <span onClick={() => (addlike(index, 'angry'), this.showReactsDiv(false, index))} className='fbreacts'
+                      onMouseEnter={() => this.setState({ reactsSize: 'md', reactsType: 'angry' })
+                      }
+                      onMouseLeave={() => this.setState({ reactsSize: 'sm' })
+                      }
+                    // onBlur={() => this.showReactsDiv(false) 
+                    // }
+                    >
+                      <FacebookEmoji type="angry" size={reactsType === 'angry' ? reactsSize : 'sm'} /></span>
                   </Tooltip>
 
                 </Paper> : null

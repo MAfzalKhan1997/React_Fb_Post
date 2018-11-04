@@ -46,25 +46,30 @@
   /* font-weight: 400 !important; */
 }
 
+@media (max-width:500px) { .fbbtns{ 
+  line-height: 10px !important
+}}
+
 .fbreactsDiv{
 position: absolute !important;
-width: 258px !important;
+/* width: 258px !important; */
 height: 43px !important;
 border-radius: 100px !important;
-padding: 3px 0px 0px 0px !important;
+padding: 3px 2px 0px 2px !important;
 /* border: 1px black solid !important; */
 /* margin-bottom: 30px !important; */
 /* top: 80px !important; */
-margin-top: -43px !important;
+margin-top: -42px !important;
 margin-left: -4px !important;
 }
 
 .fbreacts{
-  margin: 0px 3px 0px 3px !important;
+  margin: 0px 2px 0px 2px !important;
 }
 
 @media (max-width:500px) { .btntext{
-  display: none !important;
+  /* display: none !important; */ 
+  font-size: 12px !important; 
 }}
 
 .nomargin{
@@ -75,10 +80,6 @@ margin-left: -4px !important;
   margin: -10px 0px -15px 0px !important; 
 }
 
-/* .reactstipt{
-  font-size: 11px !important; 
-} */
-
-/* @media (max-width:500px) { .logoutbtn { 
-  font-size: 27px;
-} */
+@media (max-width:500px) { .btnreact{
+  margin: -15px 0px -15px 0px !important; 
+}}
