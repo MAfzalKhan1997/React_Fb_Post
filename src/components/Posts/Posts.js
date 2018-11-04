@@ -21,6 +21,9 @@ import InsertComment from '@material-ui/icons/InsertCommentOutlined';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Paper from '@material-ui/core/Paper';
+import Tooltip from '@material-ui/core/Tooltip';
+import Fade from '@material-ui/core/Fade';
+import Zoom from '@material-ui/core/Zoom';
 
 import FbImageLibrary from 'react-fb-image-grid';
 import FacebookEmoji from 'react-facebook-emoji';
@@ -44,6 +47,12 @@ const styles = theme => ({
   },
   avatar: {
     // backgroundColor: red[500],
+  },
+  lightTooltip: { 
+    background: theme.palette.common.black,
+    color: theme.palette.text.white,
+    // boxShadow: theme.shadows[1],
+    fontSize: 13,
   },
 });
 
@@ -132,22 +141,40 @@ class Post extends Component {
                   onMouseLeave={() => this.showReactsDiv(false, index)
                   }
                 >
-                  <span onClick={() => (addlike(index,'like'), this.showReactsDiv(false, index))} className='fbreacts'>
-                    <FacebookEmoji type="like" size="sm" /></span>
-                  <span onClick={() => (addlike(index,'love'), this.showReactsDiv(false, index))} className='fbreacts'>
-                    <FacebookEmoji type="love" size="sm" /></span>
-                  <span onClick={() => (addlike(index,'haha'), this.showReactsDiv(false, index))} className='fbreacts'>
-                    <FacebookEmoji type="haha" size="sm" /></span>
-                  <span onClick={() => (addlike(index,'wow'), this.showReactsDiv(false, index))} className='fbreacts'>
-                    <FacebookEmoji type="wow" size="sm" /></span>
-                  <span onClick={() => (addlike(index,'sad'), this.showReactsDiv(false, index))} className='fbreacts'>
-                    <FacebookEmoji type="sad" size="sm" /></span>
-                  <span onClick={() => (addlike(index,'angry'), this.showReactsDiv(false, index))} className='fbreacts'>
-                    <FacebookEmoji type="angry" size="sm" /></span>
+                  <Tooltip TransitionComponent={Zoom} placement="top" title="Like" classes={{ tooltip: classes.lightTooltip }}>
+                    <span onClick={() => (addlike(index, 'liked'), this.showReactsDiv(false, index))} className='fbreacts'>
+                      <FacebookEmoji type="like" size="sm" /></span>
+                  </Tooltip>
+
+                  <Tooltip TransitionComponent={Zoom} placement="top" title="Love" classes={{ tooltip: classes.lightTooltip }}>
+                    <span onClick={() => (addlike(index, 'love'), this.showReactsDiv(false, index))} className='fbreacts'>
+                      <FacebookEmoji type="love" size="sm" /></span>
+                  </Tooltip>
+
+                  <Tooltip TransitionComponent={Zoom} placement="top" title="Haha" classes={{ tooltip: classes.lightTooltip }}>
+                    <span onClick={() => (addlike(index, 'haha'), this.showReactsDiv(false, index))} className='fbreacts'>
+                      <FacebookEmoji type="haha" size="sm" /></span>
+                  </Tooltip>
+
+                  <Tooltip TransitionComponent={Zoom} placement="top" title="Wow" classes={{ tooltip: classes.lightTooltip }}>
+                    <span onClick={() => (addlike(index, 'wow'), this.showReactsDiv(false, index))} className='fbreacts'>
+                      <FacebookEmoji type="wow" size="sm" /></span>
+                  </Tooltip>
+
+                  <Tooltip TransitionComponent={Zoom} placement="top" title="Sad" classes={{ tooltip: classes.lightTooltip }}>
+                    <span onClick={() => (addlike(index, 'sad'), this.showReactsDiv(false, index))} className='fbreacts'>
+                      <FacebookEmoji type="sad" size="sm" /></span>
+                  </Tooltip>
+
+                  <Tooltip TransitionComponent={Zoom} placement="top" title="Angry" classes={{ tooltip: classes.lightTooltip }}>
+                    <span onClick={() => (addlike(index, 'angry'), this.showReactsDiv(false, index))} className='fbreacts'>
+                      <FacebookEmoji type="angry" size="sm" /></span>
+                  </Tooltip>
+
                 </Paper> : null
               }
               <Button aria-label="Add to favorites" className='fbbtns'
-                onClick={() => (addlike(index,'btn'), this.showReactsDiv(false, index))
+                onClick={() => (addlike(index, 'like'), this.showReactsDiv(false, index))
                 }
                 onTouchStart={() => this.showReactsDiv(true, index)
                 }
@@ -162,7 +189,8 @@ class Post extends Component {
               //   this.showReactsDiv(false);
               // }}
               >
-                <ThumbUpAlt /> &nbsp; &nbsp; <span className='btntext'>{posts.react ? posts.react === 'btn' ? 'Like' : posts.react : 'Like' }</span>
+                {posts.react ? <span className='btnreact' ><FacebookEmoji type={posts.react} size="xs" /></span> :
+                  <ThumbUpAlt />} &nbsp; &nbsp; <span className='btntext'>{posts.react ? posts.react === 'like' ? 'Liked' : posts.react : 'Like'}</span>
               </Button>
               <Button aria-label="Comment" className='fbbtns'>
                 <InsertComment /> &nbsp; &nbsp; <span className='btntext'> Comment </span>

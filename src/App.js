@@ -86,11 +86,12 @@ class App extends Component {
 
     if (fbPosts[index].react === type) {
 
-      if (fbPosts[index].react === 'btn') {
+      if (fbPosts[index].react === 'like') {
 
         if (fbPosts[index].likes[0] === 'You') {
 
           fbPosts[index].likes.splice(0, 1);
+          fbPosts[index].react = null;
         }
         else {
           fbPosts[index].likes.splice(0, 0, 'You');
@@ -101,8 +102,9 @@ class App extends Component {
     else {
       fbPosts[index].react = type;
 
-      if (fbPosts[index].react === 'btn' && fbPosts[index].likes[0] === 'You') {
+      if (fbPosts[index].react === 'like' && fbPosts[index].likes[0] === 'You') {
         fbPosts[index].likes.splice(0, 1);
+        fbPosts[index].react = null;
       }
       else {
         if (fbPosts[index].likes[0] !== 'You') {

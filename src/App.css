@@ -71,6 +71,13 @@ margin-left: -4px !important;
   margin: -5px -8px -20px -8px !important;
 }
 
+.btnreact{
+  margin: -10px 0px -15px 0px !important; 
+}
+
+/* .reactstipt{
+  font-size: 11px !important; 
+} */
 
 /* @media (max-width:500px) { .logoutbtn { 
   font-size: 27px;
